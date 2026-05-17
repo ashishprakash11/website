@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The New Cartography of Influence — THE SIGNAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,300;1,7..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0d13;--surface:#13161f;--surface2:#1c2030;--border:#252a3a;--text:#e8e2d5;--muted:#7a7f94;--accent:#c8392b;--gold:#e8a832;--cyan:#3ab0c8;--green:#2dc483;--purple:#c47de8;--white:#f5f0e6;--T:.22s ease;}
+[data-theme="light"]{--bg:#f4f0e8;--surface:#ece8df;--surface2:#e2ddd4;--border:#ccc7bc;--text:#1e2030;--muted:#7a7080;--white:#0d0f1a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Literata',Georgia,serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background var(--T),color var(--T);}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.45;}
+a{color:inherit;text-decoration:none;}
+/* READING PROGRESS */
+.rpb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));z-index:200;width:0%;transition:width .1s;}
+/* TICKER */
+.ticker-wrap{background:var(--accent);overflow:hidden;white-space:nowrap;display:flex;align-items:center;height:34px;}
+.ticker-label{background:#8a1f16;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.12em;padding:0 14px;height:100%;display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;}
+.ticker-inner{overflow:hidden;flex:1;display:flex;}
+.ticker-track{display:inline-flex;animation:ticker 42s linear infinite;}
+.ticker-track span{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#fff;padding:0 40px;letter-spacing:.03em;}
+.ticker-track span::after{content:'◆';margin-left:40px;opacity:.5;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* HEADER */
+header{border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(11,13,19,.97);backdrop-filter:blur(14px);transition:background var(--T);}
+[data-theme="light"] header{background:rgba(244,240,232,.97);}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;max-width:1400px;margin:0 auto;gap:14px;}
+.logo{font-family:'DM Serif Display',serif;font-size:1.85rem;letter-spacing:-.02em;color:var(--white);flex-shrink:0;}
+.logo span{color:var(--accent);}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.icon-btn{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all var(--T);}
+.icon-btn:hover{color:var(--text);border-color:var(--muted);}
+nav{border-top:1px solid var(--border);max-width:1400px;margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-link{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:12px 18px;border-bottom:2px solid transparent;transition:all var(--T);white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.nav-link:hover{color:var(--text);}
+.nav-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+/* BREADCRUMB */
+.breadcrumb{max-width:1400px;margin:0 auto;padding:16px 40px 0;display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);}
+.breadcrumb a{color:var(--muted);transition:color var(--T);}
+.breadcrumb a:hover{color:var(--text);}
+.bc-sep{opacity:.4;}
+/* ARTICLE HEADER */
+.art-header{max-width:800px;margin:32px auto 0;padding:0 40px;}
+.art-cat{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.chip{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px;}
+.ch-geo{background:rgba(58,176,200,.12);color:var(--cyan);}
+.ch-tech{background:rgba(45,196,131,.12);color:var(--green);}
+.ch-sport{background:rgba(232,168,50,.12);color:var(--gold);}
+.ch-media{background:rgba(196,125,232,.12);color:var(--purple);}
+.ch-fact{background:rgba(200,57,43,.15);color:#e87070;}
+.art-header h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;line-height:1.15;color:var(--white);margin-bottom:16px;}
+.art-deck{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--muted);line-height:1.55;margin-bottom:24px;}
+.art-byline{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.author-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0;}
+.byline-info{flex:1;}
+.byline-name{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;color:var(--text);}
+.byline-meta{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);}
+.share-strip{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.share-btn{width:34px;height:34px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all var(--T);}
+.share-btn:hover{color:var(--text);border-color:var(--muted);}
+.bookmark-btn{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer;transition:all var(--T);}
+.bookmark-btn:hover,.bookmark-btn.saved{border-color:var(--accent);color:var(--accent);}
+/* ARTICLE LAYOUT */
+.art-layout{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 260px;gap:60px;align-items:start;}
+/* ARTICLE BODY */
+.art-body{padding:40px 0 60px;}
+.art-hero-img{width:100%;height:320px;border-radius:6px;margin-bottom:8px;background:radial-gradient(ellipse at 30% 40%,rgba(200,57,43,.25),transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(58,176,200,.15),transparent 55%),linear-gradient(135deg,#13161f,#0b0d13);position:relative;overflow:hidden;}
+.art-hero-img::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.025) 12px,rgba(255,255,255,.025) 13px);}
+.img-caption{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);margin-bottom:32px;padding-top:8px;border-bottom:1px solid var(--border);padding-bottom:8px;}
+.art-body p{font-size:1.08rem;line-height:1.85;margin-bottom:1.5em;color:var(--text);}
+.art-body h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin:2.5em 0 .8em;line-height:1.25;}
+.art-body h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin:2em 0 .6em;}
+.pull-quote{border-left:3px solid var(--accent);padding:20px 28px;margin:2.5em 0;background:var(--surface);border-radius:0 6px 6px 0;}
+.pull-quote p{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;color:var(--white);line-height:1.5;margin:0;}
+.pull-quote cite{display:block;font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:10px;font-style:normal;}
+.inline-fact{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:16px 20px;margin:2em 0;}
+.inline-fact-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.inline-fact p{font-size:.9rem;color:var(--muted);margin:0;}
+.data-point{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:2em 0;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;}
+.dp-item{text-align:center;}
+.dp-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--white);display:block;}
+.dp-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.06em;}
+.art-tags-footer{display:flex;gap:8px;flex-wrap:wrap;margin-top:2.5em;padding-top:1.5em;border-top:1px solid var(--border);}
+.tag-pill-lg{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.06em;border:1px solid var(--border);padding:6px 14px;border-radius:20px;color:var(--muted);cursor:pointer;transition:all var(--T);}
+.tag-pill-lg:hover{border-color:var(--text);color:var(--text);}
+/* TOC SIDEBAR */
+.art-sidebar{position:sticky;top:110px;padding-top:40px;}
+.toc-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:24px;}
+.toc-title{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.toc-item{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);transition:color var(--T);cursor:pointer;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover,.toc-item.active{color:var(--accent);}
+.sb-nl{background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:24px;}
+.sb-nl h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:6px;}
+.sb-nl p{font-size:.78rem;color:var(--muted);margin-bottom:12px;}
+.nl-inp{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:8px 10px;border-radius:5px;margin-bottom:8px;outline:none;font-family:'Literata',serif;}
+.nl-inp:focus{border-color:var(--accent);}
+.nl-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:9px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background var(--T);}
+.nl-btn:hover{background:#a02d22;}
+/* AUTHOR CARD */
+.author-card{max-width:800px;margin:0 auto 60px;padding:0 40px;}
+.ac-inner{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px;display:flex;gap:24px;align-items:flex-start;}
+.ac-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;flex-shrink:0;}
+.ac-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:4px;}
+.ac-role{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--accent);margin-bottom:10px;}
+.ac-bio{font-size:.88rem;color:var(--muted);line-height:1.6;}
+/* RELATED */
+.related-section{max-width:1200px;margin:0 auto 60px;padding:0 40px;}
+.rel-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:24px;}
+.rel-title::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--accent);}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.rel-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color var(--T),transform var(--T);cursor:pointer;}
+.rel-card:hover{border-color:var(--muted);transform:translateY(-2px);}
+.rel-img{height:120px;background:linear-gradient(135deg,var(--surface2),var(--surface));position:relative;overflow:hidden;}
+.rel-img::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);}
+.rc-i-geo{background:linear-gradient(135deg,#1a2535,#0e1e2e);}
+.rc-i-tech{background:linear-gradient(135deg,#0f2018,#0a1a14);}
+.rc-i-media{background:linear-gradient(135deg,#1e1228,#140d1e);}
+.rel-body{padding:16px;}
+.rel-body .chip{margin-bottom:8px;display:inline-block;}
+.rel-card-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:8px;transition:color var(--T);}
+.rel-card:hover .rel-card-title{color:var(--white);}
+.rel-foot{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted);}
+/* COMMENTS */
+.comments-section{max-width:800px;margin:0 auto 60px;padding:0 40px;}
+.comments-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:24px;}
+.comments-title::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--cyan);}
+.comment{display:flex;gap:14px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.comment:last-child{border-bottom:none;}
+.c-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:#fff;flex-shrink:0;}
+.c-name{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;color:var(--text);}
+.c-time{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted);margin-left:8px;}
+.c-text{font-size:.88rem;color:var(--muted);line-height:1.6;margin-top:4px;}
+.comment-form{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;}
+.comment-form h4{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.c-textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'Literata',serif;font-size:.88rem;padding:12px;border-radius:5px;resize:vertical;min-height:80px;outline:none;transition:border-color var(--T);}
+.c-textarea:focus{border-color:var(--accent);}
+.c-submit{margin-top:10px;background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background var(--T);}
+.c-submit:hover{background:#a02d22;}
+/* BTT */
+.btt{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,57,43,.4);opacity:0;transform:translateY(10px);transition:opacity var(--T),transform var(--T);z-index:90;}
+.btt.on{opacity:1;transform:none;}
+.btt:hover{background:#a02d22;}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 40px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.f-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--white);}
+.f-logo span{color:var(--accent);}
+.f-links{display:flex;gap:24px;flex-wrap:wrap;}
+.f-links a{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:var(--muted);transition:color var(--T);}
+.f-links a:hover{color:var(--text);}
+.f-copy{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+@media(max-width:900px){
+  .art-layout{grid-template-columns:1fr;gap:0;}
+  .art-sidebar{display:none;}
+  .related-grid{grid-template-columns:1fr 1fr;}
+  .art-header h1{font-size:1.8rem;}
+  .art-header,.art-body,.author-card,.related-section,.comments-section{padding:0 20px;}
+  .breadcrumb{padding:12px 20px 0;}
+  .header-top{padding:0 20px;}
+  nav{padding:0 20px;}
+  footer{padding:24px 20px;}
+}
+@media(max-width:600px){
+  .related-grid{grid-template-columns:1fr;}
+  .ac-inner{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="rpb" id="rpb"></div>
+
+<div class="ticker-wrap">
+  <div class="ticker-label">⚡ Live</div>
+  <div class="ticker-inner">
+    <div class="ticker-track">
+      <span>UN Security Council convenes emergency session over escalating border conflict</span>
+      <span>FACT CHECK: Viral WHO pandemic treaty claim — MISLEADING</span>
+      <span>Apple unveils spatial computing SDK for third-party developers</span>
+      <span>Champions League semifinal draw: all-European clash confirmed</span>
+      <span>Deepfake election ad triggers FEC investigation in three swing states</span>
+      <span>UN Security Council convenes emergency session over escalating border conflict</span>
+      <span>FACT CHECK: Viral WHO pandemic treaty claim — MISLEADING</span>
+      <span>Apple unveils spatial computing SDK for third-party developers</span>
+      <span>Champions League semifinal draw: all-European clash confirmed</span>
+      <span>Deepfake election ad triggers FEC investigation in three swing states</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="header-top">
+    <a href="index.html" class="logo">THE <span>SIGNAL</span></a>
+    <div class="hdr-right">
+      <a href="search.html" class="icon-btn" title="Search">🔍</a>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">☾</button>
+    </div>
+  </div>
+  <nav>
+    <a class="nav-link" href="index.html"><span class="nav-dot" style="background:#e87070"></span>All</a>
+    <a class="nav-link" href="category.html?cat=factcheck"><span class="nav-dot" style="background:#e87070"></span>Fact Check</a>
+    <a class="nav-link" href="category.html?cat=geopolitics"><span class="nav-dot" style="background:var(--cyan)"></span>Geopolitics</a>
+    <a class="nav-link" href="category.html?cat=sports"><span class="nav-dot" style="background:var(--gold)"></span>Sports</a>
+    <a class="nav-link" href="category.html?cat=media"><span class="nav-dot" style="background:var(--purple)"></span>Media</a>
+    <a class="nav-link" href="category.html?cat=tech"><span class="nav-dot" style="background:var(--green)"></span>Tech</a>
+  </nav>
+</header>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="bc-sep">/</span>
+  <a href="category.html?cat=geopolitics">Geopolitics</a><span class="bc-sep">/</span>
+  <span style="color:var(--text)">The New Cartography of Influence</span>
+</div>
+
+<div class="art-header rv">
+  <div class="art-cat">
+    <span class="chip ch-geo">Geopolitics</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted)">Cover Story</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--accent)">12 min read</span>
+  </div>
+  <h1>The New Cartography of Influence: How AI Is Redrawing Geopolitical Borders</h1>
+  <div class="art-deck">State-backed language models are reshaping information ecosystems across six continents — and Western intelligence agencies are only beginning to map the terrain.</div>
+  <div class="art-byline">
+    <div class="author-avatar">M</div>
+    <div class="byline-info">
+      <div class="byline-name">Meera Iyer</div>
+      <div class="byline-meta">Senior Correspondent, Tech &amp; Geopolitics · March 26, 2026 · Updated 3h ago</div>
+    </div>
+    <div class="share-strip">
+      <button class="share-btn" onclick="shareX()" title="Share on X">𝕏</button>
+      <button class="share-btn" onclick="shareWA()" title="Share on WhatsApp">💬</button>
+      <button class="share-btn" onclick="copyLink()" title="Copy link" id="copyBtn">🔗</button>
+      <button class="bookmark-btn" id="bkBtn" onclick="toggleBookmark()">🔖 Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <div class="art-body" id="art-body">
+    <div class="art-hero-img"></div>
+    <div class="img-caption">Visualization of state-sponsored AI content operations mapped across global communication networks. Illustration: The Signal / Data: CISA, NCSC</div>
+
+    <p>In a nondescript office block in the eastern suburbs of Shanghai, a team of approximately 200 engineers is engaged in work that no press release will ever describe. They are training language models — not to answer customer queries or write marketing copy, but to understand how narratives spread, fracture, and mutate across the fractured archipelago of global social media.</p>
+
+    <p>This is, according to four people with direct knowledge of the project who spoke to The Signal on condition of anonymity, one of at least eleven such state-linked programs currently active across China, Russia, Iran, and three additional nations that intelligence officials declined to name. The goal is not crude propaganda. It is something far more subtle, far more durable, and far more difficult to counter.</p>
+
+    <div class="pull-quote"><p>"The old model was to shout louder than everyone else. The new model is to make everyone else uncertain about what they're hearing."</p><cite>— Senior official, GCHQ, speaking on background</cite></div>
+
+    <h2 id="s1">The Architecture of Epistemic Warfare</h2>
+
+    <p>The shift began, most analysts agree, sometime between 2022 and 2024, when large language models became capable enough to produce text indistinguishable from human-written content at scale. The change this enabled was not merely quantitative — more disinformation produced faster — but qualitative. For the first time, influence operations could be responsive, adaptive, and contextually sophisticated in ways no human team could match.</p>
+
+    <p>Traditional influence operations worked by inserting false content into information ecosystems and hoping it would spread. The new approach is different: it involves identifying the specific cognitive vulnerabilities of target populations — their existing suspicions, their trusted voices, their known blind spots — and crafting narratives precisely calibrated to exploit them.</p>
+
+    <div class="data-point">
+      <div class="dp-item"><span class="dp-num">11+</span><span class="dp-label">Active State AI Programs</span></div>
+      <div class="dp-item"><span class="dp-num">6</span><span class="dp-label">Continents Targeted</span></div>
+      <div class="dp-item"><span class="dp-num">$2.4B</span><span class="dp-label">Est. Annual Spend</span></div>
+    </div>
+
+    <p>The signals intelligence community has a term for this: epistemic warfare. It is not about making people believe false things — that is too easily detected and countered. It is about making people uncertain about true things. The target is not belief but trust itself.</p>
+
+    <h2 id="s2">What the Models Are Actually Doing</h2>
+
+    <p>The technical architecture varies by nation-state actor, but certain patterns have emerged. Based on leaked procurement documents, academic publications from affiliated research institutes, and interviews with former intelligence officials, The Signal has reconstructed a general picture of how these systems operate.</p>
+
+    <div class="inline-fact">
+      <div class="inline-fact-label">📌 Key Finding</div>
+      <p>State-backed AI influence operations are not primarily producing fake news. They are producing authentic-seeming commentary that amplifies existing divisions within target societies — a far harder problem to detect and counter.</p>
+    </div>
+
+    <p>The core capability is what researchers call "narrative injection" — the ability to introduce a framing device into public discourse that, once established, shapes how subsequent genuine information is interpreted. A story about a political scandal, for instance, might be preceded by weeks of subtle AI-generated commentary establishing the conditions under which the scandal will seem most damning.</p>
+
+    <h2 id="s3">The Western Response — and Its Limits</h2>
+
+    <p>Western governments are not passive observers. The US Cybersecurity and Infrastructure Security Agency, Britain's NCSC, and the European Union's External Action Service have all expanded their counter-influence capabilities significantly since 2024. Several democratic nations have established joint task forces specifically focused on AI-enabled information operations.</p>
+
+    <p>But there is a fundamental asymmetry that officials find difficult to discuss publicly. Authoritarian states can deploy these capabilities with minimal legal or ethical constraints. Democratic governments, by contrast, face significant barriers — both legal and political — to the kind of domestic counter-messaging that would be most effective.</p>
+
+    <div class="pull-quote"><p>"We are defending a principle — the right of citizens to make up their own minds — using tools that would compromise that principle if we used them aggressively."</p><cite>— Former NSC Director for Strategic Communications</cite></div>
+
+    <h2 id="s4">The Road Ahead</h2>
+
+    <p>The scholars and officials who study this problem most closely are not optimistic about near-term solutions. The underlying technology — capable, cheap, and rapidly improving — is now widely available. The knowledge required to deploy it for influence operations is spreading through technical communities that are not geographically or jurisdictionally bounded.</p>
+
+    <p>What is possible, most agree, is improving the resilience of democratic societies to manipulation — teaching citizens to recognize the patterns, building institutional trust through demonstrated accountability, and creating the social and technical infrastructure that makes epistemic attacks less effective. None of this is quick, cheap, or easy. But the alternative — ceding the information environment to actors who have no compunction about exploiting it — is not viable.</p>
+
+    <p>The cartographers of influence are drawing new maps. The question is whether democratic societies will develop the tools to read them in time.</p>
+
+    <div class="art-tags-footer">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);align-self:center;">Tagged:</span>
+      <div class="tag-pill-lg">AI Policy</div>
+      <div class="tag-pill-lg">Disinformation</div>
+      <div class="tag-pill-lg">China</div>
+      <div class="tag-pill-lg">Russia</div>
+      <div class="tag-pill-lg">CISA</div>
+      <div class="tag-pill-lg">Intelligence</div>
+    </div>
+  </div>
+
+  <aside class="art-sidebar">
+    <div class="toc-box">
+      <div class="toc-title">In This Article</div>
+      <a class="toc-item" href="#s1" onclick="setTOC(this)">The Architecture of Epistemic Warfare</a>
+      <a class="toc-item" href="#s2" onclick="setTOC(this)">What the Models Are Actually Doing</a>
+      <a class="toc-item" href="#s3" onclick="setTOC(this)">The Western Response — and Its Limits</a>
+      <a class="toc-item" href="#s4" onclick="setTOC(this)">The Road Ahead</a>
+    </div>
+    <div class="sb-nl">
+      <h4>Get The Daily Signal</h4>
+      <p>Five stories. Every morning. Free.</p>
+      <input class="nl-inp" id="sb-email" placeholder="your@email.com" type="email"/>
+      <button class="nl-btn" onclick="subSB(this)">Subscribe →</button>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--muted);line-height:1.6;">
+      <div style="color:var(--text);font-weight:600;margin-bottom:6px;">📖 Reading Progress</div>
+      <div style="background:var(--border);border-radius:3px;height:4px;margin:8px 0;"><div id="sb-prog" style="height:4px;border-radius:3px;background:var(--accent);width:0%;transition:width .3s;"></div></div>
+      <div id="sb-pct">0% complete</div>
+    </div>
+  </aside>
+</div>
+
+<div class="author-card rv">
+  <div class="ac-inner">
+    <div class="ac-avatar">M</div>
+    <div>
+      <div class="ac-name">Meera Iyer</div>
+      <div class="ac-role">Senior Correspondent · Tech &amp; Geopolitics</div>
+      <div class="ac-bio">Meera covers the intersection of emerging technology and international relations for The Signal. Previously at Reuters and The Wire. Based between New Delhi and London. She holds an M.Phil in International Relations from Oxford.</div>
+    </div>
+  </div>
+</div>
+
+<div class="related-section rv">
+  <div class="rel-title">More To Read</div>
+  <div class="related-grid">
+    <a href="article.html"><div class="rel-card"><div class="rel-img rc-i-geo"><div style="width:100%;height:100%;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);"></div></div><div class="rel-body"><span class="chip ch-geo" style="display:inline-block;margin-bottom:8px">Geopolitics</span><div class="rel-card-title">Russia's Arctic Ambitions Are Accelerating Faster Than NATO Realizes</div><div class="rel-foot">Elena Kovacs · 11 min</div></div></div></a>
+    <a href="article.html"><div class="rel-card"><div class="rel-img rc-i-tech"><div style="width:100%;height:100%;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);"></div></div><div class="rel-body"><span class="chip ch-tech" style="display:inline-block;margin-bottom:8px">Tech</span><div class="rel-card-title">The Open-Source AI Models That Governments Are Quietly Banning</div><div class="rel-foot">Li Wei · 10 min</div></div></div></a>
+    <a href="article.html"><div class="rel-card"><div class="rel-img rc-i-media"><div style="width:100%;height:100%;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);"></div></div><div class="rel-body"><span class="chip ch-media" style="display:inline-block;margin-bottom:8px">Media</span><div class="rel-card-title">The Algorithm That Decided What a Billion People Saw During the Taiwan Strait Crisis</div><div class="rel-foot">Investigations Desk · 14 min</div></div></div></a>
+  </div>
+</div>
+
+<div class="comments-section rv">
+  <div class="comments-title">Discussion (12)</div>
+  <div class="comment">
+    <div class="c-avatar" style="background:linear-gradient(135deg,#3ab0c8,#2dc483)">R</div>
+    <div><div class="c-name">Rajesh Nambiar<span class="c-time">2h ago</span></div><div class="c-text">The section on "epistemic warfare" is the most important framing I've encountered. The goal isn't to make you believe lies — it's to make you doubt everything. That's far harder to counter because the solution can't just be "more fact-checking."</div></div>
+  </div>
+  <div class="comment">
+    <div class="c-avatar" style="background:linear-gradient(135deg,#c47de8,#c8392b)">S</div>
+    <div><div class="c-name">Sana Mirza<span class="c-time">3h ago</span></div><div class="c-text">Would love a follow-up on what "improving societal resilience" actually looks like in practice. The piece correctly identifies the problem but the solutions remain vague — which perhaps reflects the state of the field.</div></div>
+  </div>
+  <div class="comment">
+    <div class="c-avatar" style="background:linear-gradient(135deg,#e8a832,#c8392b)">A</div>
+    <div><div class="c-name">Arjun Krishnan<span class="c-time">5h ago</span></div><div class="c-text">The asymmetry point is crucial. Democracies can't fight AI-driven narrative manipulation with their own version of AI-driven narrative manipulation without destroying the very thing they're trying to protect.</div></div>
+  </div>
+  <div class="comment-form">
+    <h4>Join the Discussion</h4>
+    <textarea class="c-textarea" placeholder="Share your thoughts on this article..."></textarea>
+    <button class="c-submit" onclick="postComment(this)">Post Comment</button>
+  </div>
+</div>
+
+<div style="border-top:1px solid var(--border);margin-top:40px">
+<footer>
+  <a href="index.html" class="f-logo">THE <span>SIGNAL</span></a>
+  <div class="f-links">
+    <a href="about.html">About</a><a href="about.html#factcheck">Fact Check Policy</a><a href="about.html#editorial">Editorial Standards</a><a href="about.html#contact">Contact</a><a href="#">Privacy</a>
+  </div>
+  <div class="f-copy">© 2026 The Signal · Independent journalism</div>
+</footer>
+</div>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleTheme(){const h=document.documentElement,l=h.getAttribute('data-theme')==='light';h.setAttribute('data-theme',l?'dark':'light');document.getElementById('themeBtn').textContent=l?'☾':'☀';localStorage.setItem('sg-theme',l?'dark':'light');}
+(function(){const s=localStorage.getItem('sg-theme')||'dark';document.documentElement.setAttribute('data-theme',s);document.getElementById('themeBtn').textContent=s==='light'?'☀':'☾';})();
+// READING PROGRESS
+window.addEventListener('scroll',()=>{
+  const b=document.getElementById('art-body'),rpb=document.getElementById('rpb'),sbp=document.getElementById('sb-prog'),sbpct=document.getElementById('sb-pct');
+  if(!b)return;
+  const scrolled=window.scrollY,total=b.offsetTop+b.offsetHeight-window.innerHeight;
+  const pct=Math.min(100,Math.max(0,(scrolled-b.offsetTop+200)/b.offsetHeight*100));
+  rpb.style.width=pct+'%';
+  if(sbp){sbp.style.width=pct+'%';if(sbpct)sbpct.textContent=Math.round(pct)+'% complete';}
+  document.getElementById('btt').classList[window.scrollY>300?'add':'remove']('on');
+});
+function setTOC(el){document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+function shareX(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href));}
+function shareWA(){window.open('https://wa.me/?text='+encodeURIComponent(document.title+' '+location.href));}
+function copyLink(){navigator.clipboard.writeText(location.href).then(()=>{const b=document.getElementById('copyBtn');b.textContent='✓';setTimeout(()=>b.textContent='🔗',2000);});}
+function toggleBookmark(){const b=document.getElementById('bkBtn');const on=b.classList.toggle('saved');b.textContent=on?'✓ Saved':'🔖 Save';}
+function subSB(btn){const i=document.getElementById('sb-email');if(!i.value.includes('@')){i.style.borderColor='var(--accent)';return;}btn.textContent='✓ Done!';btn.style.background='var(--green)';btn.disabled=true;}
+function postComment(btn){const ta=btn.previousElementSibling;if(!ta.value.trim())return;btn.textContent='Posted!';btn.disabled=true;ta.value='';ta.disabled=true;}
+const rvs=document.querySelectorAll('.rv'),obs=new IntersectionObserver((e)=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*60);obs.unobserve(en.target);}});},{threshold:.06});rvs.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

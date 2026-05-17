@@ -1,0 +1,17 @@
+/*
+Theme Name: The Signal
+Theme URI: https://thesignal.news
+Author: The Signal
+Author URI: https://thesignal.news
+Description: A premium editorial news and fact-checking blog theme. Features dark/light mode, reading streaks, category sections for Fact Check, Geopolitics, Sports, Media, and Tech. Built for engagement and reader retention.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: the-signal
+Tags: news, blog, dark, editorial, magazine, custom-menu, custom-logo, featured-images, post-formats, sticky-post, threaded-comments, translation-ready
+*/
+
+/* Theme styles are in assets/css/theme.css — loaded via functions.php */

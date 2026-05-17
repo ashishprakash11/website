@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>THE SIGNAL — Truth. Context. Clarity.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,300;1,7..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0d13;--surface:#13161f;--surface2:#1c2030;--border:#252a3a;--text:#e8e2d5;--muted:#7a7f94;--accent:#c8392b;--gold:#e8a832;--cyan:#3ab0c8;--green:#2dc483;--purple:#c47de8;--white:#f5f0e6;--T:.22s ease;}
+[data-theme="light"]{--bg:#f4f0e8;--surface:#ece8df;--surface2:#e2ddd4;--border:#ccc7bc;--text:#1e2030;--muted:#7a7080;--white:#0d0f1a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Literata',Georgia,serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background var(--T),color var(--T);}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.45;}
+a{color:inherit;text-decoration:none;}
+img{display:block;width:100%;object-fit:cover;}
+/* TICKER */
+.ticker-wrap{background:var(--accent);overflow:hidden;white-space:nowrap;display:flex;align-items:center;height:34px;}
+.ticker-label{background:#8a1f16;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.12em;padding:0 14px;height:100%;display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;}
+.ticker-inner{overflow:hidden;flex:1;display:flex;}
+.ticker-track{display:inline-flex;animation:ticker 42s linear infinite;}
+.ticker-track span{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#fff;padding:0 40px;letter-spacing:.03em;}
+.ticker-track span::after{content:'◆';margin-left:40px;opacity:.5;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* HEADER */
+header{border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(11,13,19,.97);backdrop-filter:blur(14px);transition:background var(--T);}
+[data-theme="light"] header{background:rgba(244,240,232,.97);}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;max-width:1400px;margin:0 auto;gap:14px;}
+.logo{font-family:'DM Serif Display',serif;font-size:1.85rem;letter-spacing:-.02em;color:var(--white);flex-shrink:0;}
+.logo span{color:var(--accent);}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.hdr-meta{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-align:right;line-height:1.5;}
+.streak-pill{display:inline-flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--gold);cursor:default;white-space:nowrap;}
+.icon-btn{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all var(--T);flex-shrink:0;}
+.icon-btn:hover{color:var(--text);border-color:var(--muted);}
+.hamburger{display:none;}
+/* NAV */
+nav{border-top:1px solid var(--border);max-width:1400px;margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-link{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:12px 18px;border-bottom:2px solid transparent;transition:all var(--T);white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.nav-link:hover{color:var(--text);}
+.nav-link.active{color:var(--white);border-bottom-color:var(--accent);}
+.nav-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+/* MOBILE OVERLAY */
+.mob-overlay{display:none;position:fixed;inset:0;z-index:200;background:var(--bg);padding:24px;flex-direction:column;}
+.mob-overlay.open{display:flex;}
+.mob-close{align-self:flex-end;width:40px;height:40px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.mob-link{font-family:'IBM Plex Mono',monospace;font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:18px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.mob-link:hover{color:var(--white);}
+/* LAYOUT */
+.container{max-width:1400px;margin:0 auto;padding:0 40px;}
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:0;}
+.feed{border-right:1px solid var(--border);padding:40px 40px 40px 0;}
+.sidebar{padding:40px 0 40px 32px;}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:1px;background:var(--border);margin-bottom:40px;border:1px solid var(--border);}
+.hero-main{background:var(--surface);position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;}
+.hero-main::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.2) 55%,transparent 100%);z-index:1;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(200,57,43,.22),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(58,176,200,.12),transparent 55%),linear-gradient(135deg,#13161f,#0b0d13);transition:transform .6s ease;}
+.hero-main:hover .hero-bg{transform:scale(1.04);}
+.hero-grid{position:absolute;inset:0;opacity:.08;z-index:0;}
+.hero-content{position:relative;z-index:2;}
+.hero-tag{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--accent);}
+.hero-main h1{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:900;line-height:1.15;color:#f5f0e6;margin-bottom:12px;text-shadow:0 2px 20px rgba(0,0,0,.5);}
+.hero-main p{font-size:.9rem;color:rgba(232,226,213,.75);line-height:1.6;}
+.hero-meta{display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap;}
+.hero-author{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:rgba(232,226,213,.5);}
+.read-time{font-family:'IBM Plex Mono',monospace;font-size:.6rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:3px 8px;border-radius:4px;color:rgba(232,226,213,.5);}
+.hero-stack{display:flex;flex-direction:column;gap:1px;background:var(--border);}
+.hero-card{background:var(--surface);padding:22px;transition:background var(--T);flex:1;position:relative;overflow:hidden;}
+.hero-card:hover{background:var(--surface2);}
+.hero-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;opacity:0;transition:opacity var(--T);}
+.hero-card:hover::after{opacity:1;}
+.c-geo::after{background:var(--cyan);}.c-tech::after{background:var(--green);}.c-sport::after{background:var(--gold);}
+.hero-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.3;color:var(--white);margin:8px 0 6px;}
+.hero-card p{font-size:.82rem;color:var(--muted);line-height:1.5;}
+/* CHIPS */
+.chip{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:3px;}
+.ch-geo{background:rgba(58,176,200,.12);color:var(--cyan);}
+.ch-tech{background:rgba(45,196,131,.12);color:var(--green);}
+.ch-sport{background:rgba(232,168,50,.12);color:var(--gold);}
+.ch-media{background:rgba(196,125,232,.12);color:var(--purple);}
+.ch-fact{background:rgba(200,57,43,.15);color:#e87070;}
+/* SECTION HEADER */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.sec-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;}
+.sec-title::before{content:'';width:3px;height:14px;border-radius:2px;}
+.sf::before{background:#e87070;}.sg::before{background:var(--cyan);}.ss::before{background:var(--gold);}.st::before{background:var(--green);}.sm::before{background:var(--purple);}
+.see-all{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.08em;border:1px solid var(--border);padding:4px 10px;border-radius:4px;transition:all var(--T);}
+.see-all:hover{color:var(--text);border-color:var(--muted);}
+/* ARTICLE ROW */
+.art-list{display:flex;flex-direction:column;margin-bottom:40px;}
+.art-row{display:grid;grid-template-columns:1fr 90px;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);transition:all var(--T);align-items:start;}
+.art-row:last-child{border-bottom:none;}
+.art-row:hover .art-title{color:var(--white);}
+.art-row:hover .art-thumb-in{transform:scale(1.05);}
+.art-tags{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.art-title{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:var(--text);line-height:1.3;transition:color var(--T);margin-bottom:6px;}
+.art-exc{font-size:.83rem;color:var(--muted);line-height:1.55;margin-bottom:8px;}
+.art-foot{display:flex;gap:12px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);}
+.art-thumb{width:90px;height:70px;border-radius:4px;overflow:hidden;flex-shrink:0;}
+.art-thumb-in{width:100%;height:100%;transition:transform .4s ease;}
+.i-geo{background:linear-gradient(135deg,#1a2535,#0e1e2e);}
+.i-fact{background:linear-gradient(135deg,#2a1215,#1a0a0c);}
+.i-tech{background:linear-gradient(135deg,#0f2018,#0a1a14);}
+.i-sport{background:linear-gradient(135deg,#241a08,#1a1206);}
+.i-media{background:linear-gradient(135deg,#1e1228,#140d1e);}
+.i-pat{width:100%;height:100%;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);}
+/* FACT CHECK */
+.fc-strip{background:var(--surface);border:1px solid var(--border);border-left:3px solid #e87070;padding:16px 20px;margin-bottom:14px;transition:background var(--T);border-radius:0 4px 4px 0;}
+.fc-strip:hover{background:var(--surface2);}
+.verdict{font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+.vdot{width:7px;height:7px;border-radius:50%;}
+.vf{background:#e84040;}.vm{background:var(--gold);}.vt{background:var(--green);}.vp{background:var(--cyan);}
+.vfc{color:#e84040;}.vmc{color:var(--gold);}.vtc{color:var(--green);}.vpc{color:var(--cyan);}
+.fc-claim{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--text);line-height:1.35;}
+.fc-src{font-size:.75rem;color:var(--muted);margin-top:5px;}
+/* SIDEBAR */
+.sb-sec{margin-bottom:36px;}
+.sb-title{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--border);}
+.rd-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:12px;transition:border-color var(--T),background var(--T);}
+.rd-card:hover{border-color:var(--accent);background:var(--surface2);}
+.rd-title{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.pb-wrap{background:var(--border);border-radius:3px;height:3px;margin-bottom:6px;}
+.pb{height:3px;border-radius:3px;background:var(--accent);}
+.pb-pct{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted);}
+.trend-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);}
+.trend-item:last-child{border-bottom:none;}
+.trend-item:hover .trend-ttl{color:var(--white);}
+.trend-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--border);line-height:1;flex-shrink:0;width:28px;text-align:right;}
+.trend-ttl{font-family:'Playfair Display',serif;font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;transition:color var(--T);}
+.nl-box{background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:8px;padding:22px;position:relative;overflow:hidden;}
+.nl-box::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(200,57,43,.2),transparent 70%);}
+.nl-box h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:6px;}
+.nl-box p{font-size:.8rem;color:var(--muted);margin-bottom:14px;}
+.nl-inp{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'Literata',serif;font-size:.82rem;padding:9px 12px;border-radius:5px;margin-bottom:8px;outline:none;transition:border-color var(--T);}
+.nl-inp:focus{border-color:var(--accent);}
+.nl-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:10px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background var(--T);}
+.nl-btn:hover{background:#a02d22;}
+.topics{display:flex;flex-wrap:wrap;gap:7px;}
+.t-pill{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.06em;border:1px solid var(--border);padding:5px 11px;border-radius:20px;color:var(--muted);cursor:pointer;transition:all var(--T);}
+.t-pill:hover{border-color:var(--text);color:var(--text);}
+.t-pill.on{border-color:var(--accent);color:var(--accent);background:rgba(200,57,43,.08);}
+/* DIVIDER */
+.div{height:1px;background:var(--border);margin:36px 0;}
+/* BTT */
+.btt{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,57,43,.4);opacity:0;transform:translateY(10px);transition:opacity var(--T),transform var(--T);z-index:90;}
+.btt.on{opacity:1;transform:none;}
+.btt:hover{background:#a02d22;}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 40px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.f-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--white);}
+.f-logo span{color:var(--accent);}
+.f-links{display:flex;gap:24px;flex-wrap:wrap;}
+.f-links a{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:var(--muted);transition:color var(--T);}
+.f-links a:hover{color:var(--text);}
+.f-copy{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .main-grid{grid-template-columns:1fr;}
+  .feed{border-right:none;padding:24px 0;}
+  .sidebar{padding:0;border-top:1px solid var(--border);}
+  .hero{grid-template-columns:1fr;}
+  .hero-stack{flex-direction:row;overflow-x:auto;}
+  .hero-card{min-width:220px;}
+  .container,.header-top{padding:0 20px;}
+  nav{padding:0 20px;display:none;}
+  footer{padding:24px 20px;}
+  .hamburger{display:flex!important;}
+  .hdr-meta{display:none;}
+}
+@media(max-width:600px){
+  .hero-main h1{font-size:1.5rem;}
+  .hero-stack{flex-direction:column;}
+  .art-row{grid-template-columns:1fr 72px;}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-label">⚡ Live</div>
+  <div class="ticker-inner">
+    <div class="ticker-track">
+      <span>UN Security Council convenes emergency session over escalating border conflict</span>
+      <span>FACT CHECK: Viral WHO pandemic treaty claim — MISLEADING</span>
+      <span>Apple unveils spatial computing SDK for third-party developers</span>
+      <span>Champions League semifinal draw: all-European clash confirmed</span>
+      <span>Deepfake election ad triggers FEC investigation in three swing states</span>
+      <span>OpenAI board approves $4B restructuring amid investor pressure</span>
+      <span>UN Security Council convenes emergency session over escalating border conflict</span>
+      <span>FACT CHECK: Viral WHO pandemic treaty claim — MISLEADING</span>
+      <span>Apple unveils spatial computing SDK for third-party developers</span>
+      <span>Champions League semifinal draw: all-European clash confirmed</span>
+      <span>Deepfake election ad triggers FEC investigation in three swing states</span>
+      <span>OpenAI board approves $4B restructuring amid investor pressure</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="header-top">
+    <a href="index.html" class="logo">THE <span>SIGNAL</span></a>
+    <div class="hdr-right">
+      <div class="streak-pill">🔥 <span id="streak-count">5 day streak</span></div>
+      <a href="search.html" class="icon-btn" title="Search">🔍</a>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">☾</button>
+      <button class="icon-btn hamburger" onclick="document.getElementById('mob').classList.toggle('open')" title="Menu">☰</button>
+      <div class="hdr-meta">
+        <div id="live-date">Thu, 26 Mar 2026</div>
+        <div style="color:var(--accent)">Truth · Context · Clarity</div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <a class="nav-link active" href="index.html"><span class="nav-dot" style="background:#e87070"></span>All</a>
+    <a class="nav-link" href="category.html?cat=factcheck"><span class="nav-dot" style="background:#e87070"></span>Fact Check</a>
+    <a class="nav-link" href="category.html?cat=geopolitics"><span class="nav-dot" style="background:var(--cyan)"></span>Geopolitics</a>
+    <a class="nav-link" href="category.html?cat=sports"><span class="nav-dot" style="background:var(--gold)"></span>Sports</a>
+    <a class="nav-link" href="category.html?cat=media"><span class="nav-dot" style="background:var(--purple)"></span>Media</a>
+    <a class="nav-link" href="category.html?cat=tech"><span class="nav-dot" style="background:var(--green)"></span>Tech</a>
+    <a class="nav-link" href="about.html"><span class="nav-dot" style="background:var(--muted)"></span>About</a>
+  </nav>
+</header>
+
+<div class="mob-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a class="mob-link" href="index.html"><span class="nav-dot" style="background:#e87070;width:10px;height:10px;"></span>All Stories</a>
+  <a class="mob-link" href="category.html?cat=factcheck"><span class="nav-dot" style="background:#e87070;width:10px;height:10px;"></span>Fact Check</a>
+  <a class="mob-link" href="category.html?cat=geopolitics"><span class="nav-dot" style="background:var(--cyan);width:10px;height:10px;"></span>Geopolitics</a>
+  <a class="mob-link" href="category.html?cat=sports"><span class="nav-dot" style="background:var(--gold);width:10px;height:10px;"></span>Sports</a>
+  <a class="mob-link" href="category.html?cat=media"><span class="nav-dot" style="background:var(--purple);width:10px;height:10px;"></span>Media</a>
+  <a class="mob-link" href="category.html?cat=tech"><span class="nav-dot" style="background:var(--green);width:10px;height:10px;"></span>Tech</a>
+  <a class="mob-link" href="search.html">🔍 Search</a>
+  <a class="mob-link" href="about.html">About The Signal</a>
+</div>
+
+<div class="container">
+<div class="main-grid">
+<main class="feed">
+
+  <div class="hero rv">
+    <a class="hero-main" href="article.html">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg></div>
+      <div class="hero-content">
+        <div class="hero-tag">Cover Story</div>
+        <h1>The New Cartography of Influence: How AI Is Redrawing Geopolitical Borders</h1>
+        <p>State-backed language models are reshaping information ecosystems across six continents — and Western intelligence agencies are only beginning to map the terrain.</p>
+        <div class="hero-meta"><span class="hero-author">By Meera Iyer · Senior Correspondent</span><span class="read-time">12 min read</span></div>
+      </div>
+    </a>
+    <div class="hero-stack">
+      <a class="hero-card c-geo" href="article.html"><span class="chip ch-geo">Geopolitics</span><h3>India–China Border Standoff Enters Fourth Week as Diplomats Stall</h3><p>Satellite imagery reveals new encampments at disputed Himalayan passes.</p><div class="art-foot" style="margin-top:8px"><span>8 min</span></div></a>
+      <a class="hero-card c-tech" href="article.html"><span class="chip ch-tech">Tech</span><h3>The Semiconductor Arms Race Nobody Is Talking About</h3><p>Three nations quietly building chip independence outside US export controls.</p><div class="art-foot" style="margin-top:8px"><span>6 min</span></div></a>
+      <a class="hero-card c-sport" href="article.html"><span class="chip ch-sport">Sports</span><h3>Inside the $3.2B Bid That Could Reshape European Football Forever</h3><p>A sovereign wealth fund eyes three clubs — and FIFA's silence is deafening.</p><div class="art-foot" style="margin-top:8px"><span>5 min</span></div></a>
+    </div>
+  </div>
+
+  <div class="rv">
+    <div class="sec-hdr"><div class="sec-title sf">Fact Check</div><a class="see-all" href="category.html?cat=factcheck">See all →</a></div>
+    <a href="article.html" style="display:block"><div class="fc-strip"><div class="verdict vfc"><span class="vdot vf"></span>False</div><div class="fc-claim">"The WHO's new pandemic treaty grants the UN authority to override national health laws."</div><div class="fc-src">Circulating via X, Telegram — 4.2M impressions · Verified 2 hrs ago</div></div></a>
+    <a href="article.html" style="display:block"><div class="fc-strip"><div class="verdict vmc"><span class="vdot vm"></span>Misleading</div><div class="fc-claim">"India ranked 1st globally in press freedom improvement per RSF 2026 report."</div><div class="fc-src">Shared by 22 verified accounts · RSF report context omitted</div></div></a>
+    <a href="article.html" style="display:block"><div class="fc-strip"><div class="verdict vpc"><span class="vdot vp"></span>Partially True</div><div class="fc-claim">"The US debt ceiling has been raised 78 times since 1960."</div><div class="fc-src">Widely cited in congressional debates — technically 103 times by some counts</div></div></a>
+    <a href="article.html" style="display:block"><div class="fc-strip"><div class="verdict vtc"><span class="vdot vt"></span>Verified</div><div class="fc-claim">"SpaceX's Starship completed its first full orbital flight in January 2026."</div><div class="fc-src">FAA filings, SpaceX telemetry, multiple independent sources confirm</div></div></a>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="rv">
+    <div class="sec-hdr"><div class="sec-title sg">Geopolitics</div><a class="see-all" href="category.html?cat=geopolitics">See all →</a></div>
+    <div class="art-list">
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-geo">Geopolitics</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">2h ago</span></div><div class="art-title">Gaza Ceasefire Negotiations Collapse as Both Sides Blame Mediators</div><div class="art-exc">Talks in Cairo broke down overnight after a disputed pre-condition over prisoner releases. Qatari officials are reportedly flying to Washington today.</div><div class="art-foot"><span>By Amir Hassan</span><span>·</span><span>9 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-geo"><div class="i-pat"></div></div></div></a>
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-geo">Geopolitics</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">5h ago</span></div><div class="art-title">Russia's Arctic Ambitions Are Accelerating Faster Than NATO Realizes</div><div class="art-exc">New satellite data reveals three ice-capable naval bases under construction above the Arctic Circle — all within 200 nautical miles of Norwegian waters.</div><div class="art-foot"><span>By Elena Kovacs</span><span>·</span><span>11 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-geo"><div class="i-pat"></div></div></div></a>
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-geo">Geopolitics</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">Yesterday</span></div><div class="art-title">BRICS Expansion Hits Turbulence as Original Members Diverge on Voting Rights</div><div class="art-exc">The proposed two-tiered membership structure is fracturing the bloc — and China and India are on opposite sides.</div><div class="art-foot"><span>By Priya Mehta</span><span>·</span><span>7 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-geo"><div class="i-pat"></div></div></div></a>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="rv">
+    <div class="sec-hdr"><div class="sec-title ss">Sports</div><a class="see-all" href="category.html?cat=sports">See all →</a></div>
+    <div class="art-list">
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-sport">Sports</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">1h ago</span></div><div class="art-title">Neeraj Chopra Eyes World Record at Lausanne Diamond League Opener</div><div class="art-exc">The Olympic champion enters the season with a new coach, a revamped run-up, and a 91m target that would rewrite athletics history.</div><div class="art-foot"><span>By Rohit Sharma</span><span>·</span><span>5 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-sport"><div class="i-pat"></div></div></div></a>
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-sport">Sports</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">3h ago</span></div><div class="art-title">IPL 2026: Data Shows Why Teams Are Overpaying for Power-Play Bowlers</div><div class="art-exc">An analysis of 480 matches reveals the metric every franchise is chasing — and why three teams have cracked it while the rest overspend on batting depth.</div><div class="art-foot"><span>By Ananya Roy</span><span>·</span><span>8 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-sport"><div class="i-pat"></div></div></div></a>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="rv">
+    <div class="sec-hdr"><div class="sec-title st">Tech &amp; Science</div><a class="see-all" href="category.html?cat=tech">See all →</a></div>
+    <div class="art-list">
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-tech">Tech</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">4h ago</span></div><div class="art-title">The Open-Source AI Models That Governments Are Quietly Banning</div><div class="art-exc">Six countries have issued or proposed restrictions on running specific open-weight models — and the legal reasoning differs dramatically in each case.</div><div class="art-foot"><span>By Li Wei</span><span>·</span><span>10 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-tech"><div class="i-pat"></div></div></div></a>
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-tech">Tech</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">6h ago</span></div><div class="art-title">India's $10B Chip Subsidy Program Is Working — But Not the Way Anyone Planned</div><div class="art-exc">Tata Electronics is producing 28nm chips ahead of schedule, but the talent gap is forcing a rethink of the entire education pipeline.</div><div class="art-foot"><span>By Vikram Das</span><span>·</span><span>7 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-tech"><div class="i-pat"></div></div></div></a>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="rv">
+    <div class="sec-hdr"><div class="sec-title sm">Media &amp; Culture</div><a class="see-all" href="category.html?cat=media">See all →</a></div>
+    <div class="art-list">
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-media">Media</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">Today</span></div><div class="art-title">Why Three Legacy Newspapers Died in the Same Week — And What It Signals</div><div class="art-exc">The closures of The Denver Post's print edition, The Baltimore Sun's weekend supplement, and one more regional daily aren't coincidences. They're a system failure.</div><div class="art-foot"><span>By Fatima Al-Rashid</span><span>·</span><span>9 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-media"><div class="i-pat"></div></div></div></a>
+      <a class="art-row" href="article.html"><div><div class="art-tags"><span class="chip ch-media">Media</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">Yesterday</span></div><div class="art-title">The Algorithm That Decided What a Billion People Saw During the Taiwan Strait Crisis</div><div class="art-exc">An internal Meta audit leaked to The Signal reveals how feed-ranking systems suppressed context while amplifying outrage during the most dangerous 72 hours of 2026.</div><div class="art-foot"><span>By The Signal Investigations Desk</span><span>·</span><span>14 min</span></div></div><div class="art-thumb"><div class="art-thumb-in i-media"><div class="i-pat"></div></div></div></a>
+    </div>
+  </div>
+
+</main>
+
+<aside class="sidebar">
+  <div class="sb-sec rv">
+    <div class="sb-title">Continue Reading</div>
+    <a href="article.html"><div class="rd-card"><div class="rd-title">The Algorithm That Decided What a Billion People Saw During the Taiwan Strait Crisis</div><div class="pb-wrap"><div class="pb" style="width:43%"></div></div><div class="pb-pct">43% read · ~8 min left</div></div></a>
+    <a href="article.html"><div class="rd-card"><div class="rd-title">Russia's Arctic Ambitions Are Accelerating Faster Than NATO Realizes</div><div class="pb-wrap"><div class="pb" style="width:18%"></div></div><div class="pb-pct">18% read · ~9 min left</div></div></a>
+  </div>
+
+  <div class="sb-sec rv">
+    <div class="sb-title">Trending Now</div>
+    <a href="article.html" style="display:block"><div class="trend-item"><div class="trend-n">01</div><div><div class="trend-ttl">Gaza Ceasefire Collapse: What Happens Next</div><div style="margin-top:4px"><span class="chip ch-geo">Geopolitics</span></div></div></div></a>
+    <a href="article.html" style="display:block"><div class="trend-item"><div class="trend-n">02</div><div><div class="trend-ttl">WHO Pandemic Treaty: Separating Fact from Fear</div><div style="margin-top:4px"><span class="chip ch-fact">Fact Check</span></div></div></div></a>
+    <a href="article.html" style="display:block"><div class="trend-item"><div class="trend-n">03</div><div><div class="trend-ttl">India's Chip Subsidy: Early Lessons</div><div style="margin-top:4px"><span class="chip ch-tech">Tech</span></div></div></div></a>
+    <a href="article.html" style="display:block"><div class="trend-item"><div class="trend-n">04</div><div><div class="trend-ttl">IPL 2026 Power-Play Bowling Analysis</div><div style="margin-top:4px"><span class="chip ch-sport">Sports</span></div></div></div></a>
+    <a href="article.html" style="display:block"><div class="trend-item"><div class="trend-n">05</div><div><div class="trend-ttl">Legacy Newspapers: A System Failure</div><div style="margin-top:4px"><span class="chip ch-media">Media</span></div></div></div></a>
+  </div>
+
+  <div class="sb-sec rv">
+    <div class="nl-box">
+      <h3>The Daily Signal</h3>
+      <p>One briefing. Five stories. The world, in context — delivered by 7 AM.</p>
+      <input class="nl-inp" id="nl-email" placeholder="your@email.com" type="email"/>
+      <button class="nl-btn" onclick="subNL(this)">Subscribe Free →</button>
+    </div>
+  </div>
+
+  <div class="sb-sec rv">
+    <div class="sb-title">Follow Topics</div>
+    <div class="topics">
+      <div class="t-pill on" onclick="this.classList.toggle('on')">India</div>
+      <div class="t-pill on" onclick="this.classList.toggle('on')">AI Policy</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">NATO</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">Cricket</div>
+      <div class="t-pill on" onclick="this.classList.toggle('on')">BRICS</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">OpenAI</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">Gaza</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">SpaceX</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">Semiconductors</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">Football</div>
+      <div class="t-pill on" onclick="this.classList.toggle('on')">Media</div>
+      <div class="t-pill" onclick="this.classList.toggle('on')">Arctic</div>
+    </div>
+  </div>
+
+  <div class="sb-sec rv">
+    <div class="sb-title">Your Reading Streak</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px">
+      <div id="streak-cal" style="display:flex;gap:6px;margin-bottom:14px"></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted)">🔥 <span style="color:var(--gold)">5-day streak!</span> Come back tomorrow to keep it going.</div>
+    </div>
+  </div>
+</aside>
+
+</div></div>
+
+<div style="border-top:1px solid var(--border);margin-top:40px">
+<footer>
+  <a href="index.html" class="f-logo">THE <span>SIGNAL</span></a>
+  <div class="f-links">
+    <a href="about.html">About</a>
+    <a href="about.html#factcheck">Fact Check Policy</a>
+    <a href="about.html#editorial">Editorial Standards</a>
+    <a href="about.html#corrections">Corrections</a>
+    <a href="about.html#contact">Contact</a>
+    <a href="#">Privacy</a>
+  </div>
+  <div class="f-copy">© 2026 The Signal · Independent journalism</div>
+</footer>
+</div>
+
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleTheme(){const h=document.documentElement,l=h.getAttribute('data-theme')==='light';h.setAttribute('data-theme',l?'dark':'light');document.getElementById('themeBtn').textContent=l?'☾':'☀';localStorage.setItem('sg-theme',l?'dark':'light');}
+(function(){const s=localStorage.getItem('sg-theme')||'dark';document.documentElement.setAttribute('data-theme',s);document.getElementById('themeBtn').textContent=s==='light'?'☀':'☾';})();
+window.addEventListener('scroll',()=>{const b=document.getElementById('btt');b.classList[window.scrollY>300?'add':'remove']('on');});
+(function(){const days=['M','T','W','T','F','S','S'],done=[true,true,true,true,true,false,false],c=document.getElementById('streak-cal');days.forEach((d,i)=>{const w=document.createElement('div');w.style.cssText='flex:1;text-align:center';const dot=document.createElement('div');dot.style.cssText=`height:28px;border-radius:5px;margin-bottom:4px;background:${done[i]?'var(--accent)':'var(--border)'};opacity:${done[i]?1:.4}`;const lbl=document.createElement('div');lbl.style.cssText='font-family:"IBM Plex Mono",monospace;font-size:.55rem;color:var(--muted)';lbl.textContent=d;w.appendChild(dot);w.appendChild(lbl);c.appendChild(w);});})();
+document.getElementById('streak-count').textContent=(parseInt(localStorage.getItem('sg-streak')||5))+' day streak';
+document.getElementById('live-date').textContent=new Date().toLocaleDateString('en-US',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+function subNL(btn){const i=document.getElementById('nl-email');if(!i.value.includes('@')){i.style.borderColor='var(--accent)';return;}btn.textContent='✓ You\'re in!';btn.style.background='var(--green)';btn.disabled=true;}
+const rvs=document.querySelectorAll('.rv'),obs=new IntersectionObserver((e)=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*60);obs.unobserve(en.target);}});},{threshold:.06});rvs.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

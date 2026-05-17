@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Category — THE SIGNAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;1,7..72,300&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0d13;--surface:#13161f;--surface2:#1c2030;--border:#252a3a;--text:#e8e2d5;--muted:#7a7f94;--accent:#c8392b;--gold:#e8a832;--cyan:#3ab0c8;--green:#2dc483;--purple:#c47de8;--white:#f5f0e6;--cat-color:#c8392b;--T:.22s ease;}
+[data-theme="light"]{--bg:#f4f0e8;--surface:#ece8df;--surface2:#e2ddd4;--border:#ccc7bc;--text:#1e2030;--muted:#7a7080;--white:#0d0f1a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Literata',Georgia,serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background var(--T),color var(--T);}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.45;}
+a{color:inherit;text-decoration:none;}
+.ticker-wrap{background:var(--accent);overflow:hidden;white-space:nowrap;display:flex;align-items:center;height:34px;}
+.ticker-label{background:#8a1f16;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.12em;padding:0 14px;height:100%;display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;}
+.ticker-inner{overflow:hidden;flex:1;display:flex;}
+.ticker-track{display:inline-flex;animation:ticker 42s linear infinite;}
+.ticker-track span{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#fff;padding:0 40px;}
+.ticker-track span::after{content:'◆';margin-left:40px;opacity:.5;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+header{border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(11,13,19,.97);backdrop-filter:blur(14px);transition:background var(--T);}
+[data-theme="light"] header{background:rgba(244,240,232,.97);}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;max-width:1400px;margin:0 auto;gap:14px;}
+.logo{font-family:'DM Serif Display',serif;font-size:1.85rem;letter-spacing:-.02em;color:var(--white);flex-shrink:0;}
+.logo span{color:var(--accent);}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.icon-btn{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all var(--T);}
+.icon-btn:hover{color:var(--text);border-color:var(--muted);}
+nav{border-top:1px solid var(--border);max-width:1400px;margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-link{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:12px 18px;border-bottom:2px solid transparent;transition:all var(--T);white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.nav-link:hover{color:var(--text);}
+.nav-link.active{color:var(--white);border-bottom-color:var(--cat-color);}
+.nav-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+/* CATEGORY HERO */
+.cat-hero{border-bottom:1px solid var(--border);padding:40px 0;position:relative;overflow:hidden;}
+.cat-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(var(--cat-rgb),.15),transparent 60%);pointer-events:none;}
+.cat-hero-inner{max-width:1400px;margin:0 auto;padding:0 40px;}
+.cat-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cat-color);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.cat-eyebrow::before{content:'';width:24px;height:1px;background:var(--cat-color);}
+.cat-hero h1{font-family:'DM Serif Display',serif;font-size:3rem;color:var(--white);margin-bottom:12px;}
+.cat-hero p{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.65;}
+.cat-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap;}
+.cat-stat{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--muted);}
+.cat-stat strong{display:block;font-size:1.3rem;font-family:'Playfair Display',serif;font-weight:900;color:var(--white);}
+/* LAYOUT */
+.container{max-width:1400px;margin:0 auto;padding:0 40px;}
+.cat-layout{display:grid;grid-template-columns:1fr 300px;gap:0;padding-top:40px;}
+.cat-feed{border-right:1px solid var(--border);padding-right:40px;}
+.cat-sidebar{padding-left:32px;}
+/* FEATURED */
+.featured-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:32px;cursor:pointer;transition:border-color var(--T);}
+.featured-card:hover{border-color:var(--muted);}
+.featured-card:hover .fc-title{color:var(--white);}
+.fc-img{height:260px;position:relative;overflow:hidden;}
+.fc-img-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--surface2),var(--surface));transition:transform .5s ease;}
+.featured-card:hover .fc-img-bg{transform:scale(1.03);}
+.fc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%);}
+.fc-img-pat{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.025) 12px,rgba(255,255,255,.025) 13px);}
+.fc-img-label{position:absolute;bottom:16px;left:16px;z-index:2;font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--cat-color);color:#fff;padding:3px 10px;border-radius:3px;}
+.fc-body{padding:24px;}
+.fc-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text);line-height:1.25;margin-bottom:10px;transition:color var(--T);}
+.fc-deck{font-size:.92rem;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.fc-foot{display:flex;align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);}
+/* SORT/FILTER */
+.sort-bar{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;margin-bottom:24px;border-bottom:1px solid var(--border);}
+.sort-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);}
+.sort-opts{display:flex;gap:6px;}
+.sort-opt{font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.06em;border:1px solid var(--border);padding:4px 10px;border-radius:4px;color:var(--muted);cursor:pointer;transition:all var(--T);}
+.sort-opt:hover{border-color:var(--text);color:var(--text);}
+.sort-opt.on{border-color:var(--cat-color);color:var(--cat-color);}
+/* ARTICLE LIST */
+.art-list{display:flex;flex-direction:column;}
+.art-row{display:grid;grid-template-columns:1fr 90px;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);align-items:start;transition:all var(--T);}
+.art-row:last-child{border-bottom:none;}
+.art-row:hover .art-title{color:var(--white);}
+.art-row:hover .art-thumb-in{transform:scale(1.05);}
+.art-tags{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.chip{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:3px;}
+.art-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.3;transition:color var(--T);margin-bottom:6px;}
+.art-exc{font-size:.83rem;color:var(--muted);line-height:1.55;margin-bottom:8px;}
+.art-foot{display:flex;gap:12px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);}
+.art-thumb{width:90px;height:70px;border-radius:4px;overflow:hidden;flex-shrink:0;}
+.art-thumb-in{width:100%;height:100%;transition:transform .4s ease;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);}
+/* LOAD MORE */
+.load-more-btn{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px;border-radius:6px;cursor:pointer;transition:all var(--T);margin-top:24px;}
+.load-more-btn:hover{border-color:var(--cat-color);color:var(--cat-color);}
+/* SIDEBAR */
+.sb-sec{margin-bottom:32px;}
+.sb-title{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--border);}
+.trend-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all var(--T);}
+.trend-item:last-child{border-bottom:none;}
+.trend-item:hover .trend-ttl{color:var(--white);}
+.trend-n{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--border);line-height:1;flex-shrink:0;width:24px;text-align:right;}
+.trend-ttl{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:var(--text);line-height:1.3;transition:color var(--T);}
+.nl-box{background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:8px;padding:20px;}
+.nl-box h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px;}
+.nl-box p{font-size:.78rem;color:var(--muted);margin-bottom:12px;}
+.nl-inp{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:8px 10px;border-radius:5px;margin-bottom:8px;outline:none;font-family:'Literata',serif;}
+.nl-inp:focus{border-color:var(--cat-color);}
+.nl-btn{width:100%;background:var(--cat-color);color:#fff;border:none;padding:9px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background var(--T);}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 40px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.f-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--white);}
+.f-logo span{color:var(--accent);}
+.f-links{display:flex;gap:24px;flex-wrap:wrap;}
+.f-links a{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--muted);transition:color var(--T);}
+.f-links a:hover{color:var(--text);}
+.f-copy{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--muted);}
+.btt{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--cat-color);color:#fff;border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,57,43,.4);opacity:0;transform:translateY(10px);transition:opacity var(--T),transform var(--T);z-index:90;}
+.btt.on{opacity:1;transform:none;}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+.hidden{display:none;}
+@media(max-width:900px){
+  .cat-layout{grid-template-columns:1fr;}
+  .cat-feed{border-right:none;padding-right:0;}
+  .cat-sidebar{padding-left:0;border-top:1px solid var(--border);padding-top:32px;}
+  .container,.header-top{padding:0 20px;}
+  nav{padding:0 20px;}
+  .cat-hero-inner{padding:0 20px;}
+  footer{padding:24px 20px;}
+  .cat-hero h1{font-size:2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-label">⚡ Live</div>
+  <div class="ticker-inner">
+    <div class="ticker-track">
+      <span>UN Security Council emergency session ongoing</span><span>FACT CHECK: WHO treaty claim — MISLEADING</span><span>Apple unveils spatial SDK</span><span>Champions League semifinal draw confirmed</span><span>OpenAI $4B restructuring approved</span>
+      <span>UN Security Council emergency session ongoing</span><span>FACT CHECK: WHO treaty claim — MISLEADING</span><span>Apple unveils spatial SDK</span><span>Champions League semifinal draw confirmed</span><span>OpenAI $4B restructuring approved</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="header-top">
+    <a href="index.html" class="logo">THE <span>SIGNAL</span></a>
+    <div class="hdr-right">
+      <a href="search.html" class="icon-btn" title="Search">🔍</a>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">☾</button>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a class="nav-link" href="index.html"><span class="nav-dot" style="background:#e87070"></span>All</a>
+    <a class="nav-link" id="nl-factcheck" href="category.html?cat=factcheck"><span class="nav-dot" style="background:#e87070"></span>Fact Check</a>
+    <a class="nav-link" id="nl-geopolitics" href="category.html?cat=geopolitics"><span class="nav-dot" style="background:var(--cyan)"></span>Geopolitics</a>
+    <a class="nav-link" id="nl-sports" href="category.html?cat=sports"><span class="nav-dot" style="background:var(--gold)"></span>Sports</a>
+    <a class="nav-link" id="nl-media" href="category.html?cat=media"><span class="nav-dot" style="background:var(--purple)"></span>Media</a>
+    <a class="nav-link" id="nl-tech" href="category.html?cat=tech"><span class="nav-dot" style="background:var(--green)"></span>Tech</a>
+  </nav>
+</header>
+
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <div class="cat-eyebrow" id="cat-eyebrow">Category</div>
+    <h1 id="cat-title">Loading...</h1>
+    <p id="cat-desc">Loading category...</p>
+    <div class="cat-stats">
+      <div class="cat-stat"><strong id="cat-count">—</strong>Articles This Week</div>
+      <div class="cat-stat"><strong id="cat-reporters">—</strong>Reporters</div>
+      <div class="cat-stat"><strong id="cat-reads">—</strong>Readers This Month</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="cat-layout">
+<div class="cat-feed">
+
+  <a href="article.html" id="featured-wrap">
+  <div class="featured-card rv">
+    <div class="fc-img">
+      <div class="fc-img-bg" id="fc-img-bg"></div>
+      <div class="fc-img-pat"></div>
+      <div class="fc-img-label" id="fc-label">Category</div>
+    </div>
+    <div class="fc-body">
+      <div class="fc-title" id="fc-title">Featured article loading...</div>
+      <div class="fc-deck" id="fc-deck">Loading description...</div>
+      <div class="fc-foot"><span id="fc-author">Author</span><span>·</span><span id="fc-time">0 min read</span></div>
+    </div>
+  </div>
+  </a>
+
+  <div class="sort-bar">
+    <span class="sort-label">Sort by:</span>
+    <div class="sort-opts">
+      <div class="sort-opt on" onclick="setSort(this)">Latest</div>
+      <div class="sort-opt" onclick="setSort(this)">Most Read</div>
+      <div class="sort-opt" onclick="setSort(this)">Editors' Pick</div>
+    </div>
+  </div>
+
+  <div class="art-list rv" id="art-list"></div>
+  <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">Load More Stories ↓</button>
+
+</div>
+
+<aside class="cat-sidebar">
+  <div class="sb-sec">
+    <div class="sb-title">Trending in <span id="sb-cat-name">Category</span></div>
+    <div id="sb-trending"></div>
+  </div>
+  <div class="sb-sec">
+    <div class="nl-box">
+      <h3>The Daily Signal</h3>
+      <p>Five stories. Every morning. Free.</p>
+      <input class="nl-inp" id="nl-email" placeholder="your@email.com" type="email"/>
+      <button class="nl-btn" id="nl-btn" onclick="subNL(this)">Subscribe Free →</button>
+    </div>
+  </div>
+</aside>
+
+</div></div>
+
+<div style="border-top:1px solid var(--border);margin-top:40px">
+<footer>
+  <a href="index.html" class="f-logo">THE <span>SIGNAL</span></a>
+  <div class="f-links"><a href="about.html">About</a><a href="about.html#factcheck">Fact Check Policy</a><a href="about.html#editorial">Editorial Standards</a><a href="about.html#contact">Contact</a></div>
+  <div class="f-copy">© 2026 The Signal</div>
+</footer>
+</div>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const CATS={
+  geopolitics:{name:'Geopolitics',desc:'Deep reporting on international relations, conflict, diplomacy, and the forces reshaping the world order.',color:'#3ab0c8',rgb:'58,176,200',chip:'ch-geo',label:'Geopolitics',count:'47',reporters:'8',reads:'142K',imgBg:'linear-gradient(135deg,#1a2535,#0e1e2e)',featured:{title:'The New Cartography of Influence: How AI Is Redrawing Geopolitical Borders',deck:'State-backed language models are reshaping information ecosystems across six continents.',author:'By Meera Iyer',time:'12 min'},articles:[{title:'Gaza Ceasefire Negotiations Collapse as Both Sides Blame Mediators',exc:'Talks in Cairo broke down overnight after a disputed pre-condition over prisoner releases.',author:'Amir Hassan',time:'9 min',ago:'2h ago'},{title:'Russia\'s Arctic Ambitions Are Accelerating Faster Than NATO Realizes',exc:'New satellite data reveals three ice-capable naval bases under construction above the Arctic Circle.',author:'Elena Kovacs',time:'11 min',ago:'5h ago'},{title:'BRICS Expansion Hits Turbulence as Original Members Diverge on Voting Rights',exc:'The proposed two-tiered membership structure is fracturing the bloc.',author:'Priya Mehta',time:'7 min',ago:'Yesterday'},{title:'Taiwan Strait Tensions Reach 18-Month High as Naval Patrols Intensify',exc:'PLA Navy vessels logged 34 crossings of the median line in the past week — the highest since 2024.',author:'James Sato',time:'8 min',ago:'2 days ago'},{title:'EU Proposes New Framework for Sanctioning Disinformation Actors',exc:'The proposal would allow bloc-wide economic sanctions against state-linked media operations for the first time.',author:'Ana Petrov',time:'6 min',ago:'3 days ago'}]},
+  factcheck:{name:'Fact Check',desc:'We verify claims made by politicians, media outlets, institutions, and viral social media posts — with sources shown.',color:'#e87070',rgb:'232,112,112',chip:'ch-fact',label:'Fact Check',count:'31',reporters:'5',reads:'89K',imgBg:'linear-gradient(135deg,#2a1215,#1a0a0c)',featured:{title:'The WHO Pandemic Treaty: What It Actually Says vs. What\'s Going Viral',deck:'We read all 49 pages of the draft agreement so you don\'t have to.',author:'By The Fact Check Desk',time:'8 min'},articles:[{title:'"India ranked 1st in press freedom improvement" — Misleading',exc:'The RSF stat is technically present in the report, but the context transforms its meaning completely.',author:'Priya Mehta',time:'5 min',ago:'Today'},{title:'"US debt ceiling raised 78 times since 1960" — Partially True',exc:'Widely cited in congressional debates — technically 103 times by some counts, depending on definition.',author:'James Sato',time:'4 min',ago:'Yesterday'},{title:'"SpaceX Starship completed first full orbital flight in Jan 2026" — Verified',exc:'FAA filings, SpaceX telemetry, and multiple independent sources confirm this.',author:'Li Wei',time:'3 min',ago:'2 days ago'},{title:'"AI generated 40% of online content in 2025" — Unverifiable',exc:'No credible methodology exists to measure this — the figure originates from a marketing blog.',author:'Fact Check Desk',time:'4 min',ago:'3 days ago'}]},
+  sports:{name:'Sports',desc:'Analytics-driven coverage of cricket, football, athletics, and global sports business — beyond the scoreline.',color:'#e8a832',rgb:'232,168,50',chip:'ch-sport',label:'Sports',count:'38',reporters:'6',reads:'118K',imgBg:'linear-gradient(135deg,#241a08,#1a1206)',featured:{title:'Inside the $3.2B Bid That Could Reshape European Football Forever',deck:'A sovereign wealth fund eyes three clubs simultaneously — and FIFA\'s silence is deafening.',author:'By Ananya Roy',time:'5 min'},articles:[{title:'Neeraj Chopra Eyes World Record at Lausanne Diamond League Opener',exc:'The Olympic champion enters the season with a new coach, a revamped run-up, and a 91m target.',author:'Rohit Sharma',time:'5 min',ago:'1h ago'},{title:'IPL 2026: Data Shows Why Teams Are Overpaying for Power-Play Bowlers',exc:'An analysis of 480 matches reveals the metric every franchise is chasing.',author:'Ananya Roy',time:'8 min',ago:'3h ago'},{title:'Why the IOC\'s New Qualification Rules Are Quietly Killing Minority Sports',exc:'The updated points system heavily favors nations with large training infrastructure.',author:'Fatima Al-Rashid',time:'7 min',ago:'Yesterday'},{title:'Rohit Sharma\'s Retirement and the Changing Guard of Indian Cricket',exc:'As the era ends, the succession question reveals deep structural divides within the BCCI.',author:'Rohit Sharma',time:'9 min',ago:'2 days ago'}]},
+  media:{name:'Media & Culture',desc:'Criticism, analysis, and investigation into journalism, social platforms, entertainment, and the media economy.',color:'#c47de8',rgb:'196,125,232',chip:'ch-media',label:'Media',count:'29',reporters:'5',reads:'76K',imgBg:'linear-gradient(135deg,#1e1228,#140d1e)',featured:{title:'The Algorithm That Decided What a Billion People Saw During the Taiwan Strait Crisis',deck:'An internal Meta audit reveals how feed-ranking systems suppressed context while amplifying outrage.',author:'By The Signal Investigations Desk',time:'14 min'},articles:[{title:'Why Three Legacy Newspapers Died in the Same Week — And What It Signals',exc:'The closures aren\'t coincidences. They\'re a system failure.',author:'Fatima Al-Rashid',time:'9 min',ago:'Today'},{title:'Netflix\'s South Asia Strategy Is Working — At the Cost of Local Storytelling',exc:'Original productions in Hindi, Tamil, and Bengali are performing globally, but critics say formula is replacing voice.',author:'Priya Mehta',time:'8 min',ago:'Yesterday'},{title:'The Podcasters Who Are Becoming More Trusted Than Newspapers',exc:'Audience trust data from a 12-nation study reveals a generational shift in credibility.',author:'James Sato',time:'6 min',ago:'2 days ago'},{title:'Inside the FEC Investigation into AI-Generated Political Ads',exc:'Three campaigns, eleven swing districts, and a question about what "authentic" means in 2026.',author:'Ana Petrov',time:'10 min',ago:'3 days ago'}]},
+  tech:{name:'Tech & Science',desc:'Reported technology journalism covering AI, semiconductors, digital policy, and the science changing our world.',color:'#2dc483',rgb:'45,196,131',chip:'ch-tech',label:'Tech',count:'44',reporters:'7',reads:'131K',imgBg:'linear-gradient(135deg,#0f2018,#0a1a14)',featured:{title:'The Open-Source AI Models That Governments Are Quietly Banning',deck:'Six countries have issued or proposed restrictions — and the legal reasoning differs dramatically in each case.',author:'By Li Wei',time:'10 min'},articles:[{title:'India\'s $10B Chip Subsidy Program Is Working — But Not the Way Anyone Planned',exc:'Tata Electronics is producing 28nm chips ahead of schedule, but the talent gap is forcing a rethink.',author:'Vikram Das',time:'7 min',ago:'6h ago'},{title:'The Semiconductor Arms Race Nobody Is Talking About',exc:'Three nations quietly building chip independence outside US export controls.',author:'Meera Iyer',time:'6 min',ago:'Yesterday'},{title:'Apple\'s Spatial Computing SDK: What It Means for Indian Developers',exc:'The new toolkit lowers the barrier to entry for XR development dramatically — and Bengaluru is watching.',author:'Vikram Das',time:'5 min',ago:'2 days ago'},{title:'CERN\'s Quantum Computing Breakthrough Could Render Current Encryption Obsolete',exc:'The demonstration of a 10,000-qubit processor has quietly set off alarm bells in every major intelligence agency.',author:'Li Wei',time:'11 min',ago:'3 days ago'}]}
+};
+
+const params=new URLSearchParams(location.search);
+const catKey=params.get('cat')||'geopolitics';
+const cat=CATS[catKey]||CATS.geopolitics;
+
+// Apply cat color
+document.documentElement.style.setProperty('--cat-color',cat.color);
+
+// Set active nav
+const navEl=document.getElementById('nl-'+catKey);
+if(navEl)navEl.classList.add('active');
+
+// Update title
+document.title=cat.name+' — THE SIGNAL';
+
+// Hero
+document.getElementById('cat-eyebrow').textContent=cat.name;
+document.getElementById('cat-title').textContent=cat.name;
+document.getElementById('cat-desc').textContent=cat.desc;
+document.getElementById('cat-count').textContent=cat.count;
+document.getElementById('cat-reporters').textContent=cat.reporters;
+document.getElementById('cat-reads').textContent=cat.reads;
+
+// Featured
+document.getElementById('fc-img-bg').style.background=cat.imgBg;
+document.getElementById('fc-label').textContent=cat.label;
+document.getElementById('fc-title').textContent=cat.featured.title;
+document.getElementById('fc-deck').textContent=cat.featured.deck;
+document.getElementById('fc-author').textContent=cat.featured.author;
+document.getElementById('fc-time').textContent=cat.featured.time+' read';
+
+// Articles
+const list=document.getElementById('art-list');
+let shown=3;
+function renderArticles(){
+  list.innerHTML='';
+  cat.articles.slice(0,shown).forEach(a=>{
+    const row=document.createElement('a');
+    row.href='article.html';
+    row.className='art-row';
+    row.innerHTML=`<div><div class="art-tags"><span class="chip ${cat.chip}">${cat.label}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--muted)">${a.ago}</span></div><div class="art-title">${a.title}</div><div class="art-exc">${a.exc}</div><div class="art-foot"><span>By ${a.author}</span><span>·</span><span>${a.time} read</span></div></div><div class="art-thumb"><div class="art-thumb-in" style="background:${cat.imgBg}"></div></div>`;
+    list.appendChild(row);
+  });
+  document.getElementById('load-more-btn').style.display=shown>=cat.articles.length?'none':'block';
+}
+renderArticles();
+function loadMore(){shown+=3;renderArticles();}
+
+// Sidebar trending
+const sbTrend=document.getElementById('sb-trending');
+document.getElementById('sb-cat-name').textContent=cat.name;
+cat.articles.slice(0,4).forEach((a,i)=>{
+  const el=document.createElement('a');
+  el.href='article.html';
+  el.style.display='block';
+  el.innerHTML=`<div class="trend-item"><div class="trend-n">0${i+1}</div><div><div class="trend-ttl">${a.title}</div></div></div>`;
+  sbTrend.appendChild(el);
+});
+
+function setSort(el){document.querySelectorAll('.sort-opt').forEach(s=>s.classList.remove('on'));el.classList.add('on');}
+function toggleTheme(){const h=document.documentElement,l=h.getAttribute('data-theme')==='light';h.setAttribute('data-theme',l?'dark':'light');document.getElementById('themeBtn').textContent=l?'☾':'☀';localStorage.setItem('sg-theme',l?'dark':'light');}
+(function(){const s=localStorage.getItem('sg-theme')||'dark';document.documentElement.setAttribute('data-theme',s);document.getElementById('themeBtn').textContent=s==='light'?'☀':'☾';})();
+window.addEventListener('scroll',()=>document.getElementById('btt').classList[window.scrollY>300?'add':'remove']('on'));
+function subNL(btn){const i=document.getElementById('nl-email');if(!i.value.includes('@')){i.style.borderColor=cat.color;return;}btn.textContent='✓ Done!';btn.style.background='var(--green)';btn.disabled=true;}
+const rvs=document.querySelectorAll('.rv'),obs=new IntersectionObserver((e)=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*60);obs.unobserve(en.target);}});},{threshold:.06});rvs.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
