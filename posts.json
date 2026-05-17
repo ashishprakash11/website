@@ -1,0 +1,93 @@
+{
+  "settings": {
+    "siteName": "THE SIGNAL",
+    "tagline": "Truth. Context. Clarity.",
+    "ticker": [
+      "UN Security Council convenes emergency session over escalating border conflict",
+      "FACT CHECK: Viral WHO pandemic treaty claim — MISLEADING",
+      "Apple unveils spatial computing SDK for third-party developers",
+      "Champions League semifinal draw: all-European clash confirmed",
+      "Deepfake election ad triggers FEC investigation in three swing states",
+      "OpenAI board approves $4B restructuring amid investor pressure"
+    ],
+    "newsletter": {
+      "heading": "The Daily Signal",
+      "desc": "One briefing. Five stories. The world, in context — delivered by 7 AM."
+    },
+    "about": "We are an independent newsroom committed to original reporting, rigorous fact-checking, and journalism that gives people the context they need to understand the world.",
+    "social": { "twitter": "", "instagram": "", "whatsapp": "" }
+  },
+  "subscribers": [],
+  "posts": [
+    {
+      "id": "post-001",
+      "title": "The New Cartography of Influence: How AI Is Redrawing Geopolitical Borders",
+      "slug": "ai-geopolitical-influence",
+      "excerpt": "State-backed language models are reshaping information ecosystems across six continents — and Western intelligence agencies are only beginning to map the terrain.",
+      "content": "<p>In a nondescript office block in the eastern suburbs of Shanghai, a team of approximately 200 engineers is engaged in work that no press release will ever describe.</p><p>They are training language models — not to answer customer queries or write marketing copy, but to understand how narratives spread, fracture, and mutate across the fractured archipelago of global social media.</p><h2 id='s1'>The Architecture of Epistemic Warfare</h2><p>The shift began, most analysts agree, sometime between 2022 and 2024, when large language models became capable enough to produce text indistinguishable from human-written content at scale.</p><blockquote><p>The old model was to shout louder than everyone else. The new model is to make everyone else uncertain about what they're hearing.</p></blockquote><h2 id='s2'>What the Models Are Actually Doing</h2><p>The technical architecture varies by nation-state actor, but certain patterns have emerged from leaked procurement documents and interviews with former intelligence officials.</p><h2 id='s3'>The Western Response — and Its Limits</h2><p>Western governments are not passive observers. The US CISA, Britain's NCSC, and the EU's External Action Service have all expanded their counter-influence capabilities significantly since 2024.</p><h2 id='s4'>The Road Ahead</h2><p>The scholars and officials who study this problem most closely are not optimistic about near-term solutions. The underlying technology — capable, cheap, and rapidly improving — is now widely available.</p>",
+      "category": "geopolitics",
+      "tags": ["AI Policy", "Disinformation", "China", "Russia", "Intelligence"],
+      "author": "Meera Iyer",
+      "date": "2026-03-26",
+      "featured": true,
+      "coverImage": "",
+      "factCheck": { "verdict": "", "claim": "", "source": "" }
+    },
+    {
+      "id": "post-002",
+      "title": "The WHO Pandemic Treaty: What It Actually Says vs. What's Going Viral",
+      "slug": "who-pandemic-treaty-factcheck",
+      "excerpt": "We read all 49 pages of the draft agreement so you don't have to. Here's what it actually says.",
+      "content": "<p>A claim has been circulating widely on social media asserting that the WHO's new pandemic treaty would grant the United Nations authority to override national health laws. We investigated.</p><h2 id='verdict'>Our Verdict: FALSE</h2><p>The treaty draft contains no such provision. Article 4 explicitly affirms national sovereignty over domestic health policy. The misreading appears to stem from a misinterpretation of Article 12, which covers international data-sharing obligations.</p>",
+      "category": "fact-check",
+      "tags": ["WHO", "Health", "Fact Check"],
+      "author": "The Fact Check Desk",
+      "date": "2026-03-26",
+      "featured": false,
+      "coverImage": "",
+      "factCheck": { "verdict": "false", "claim": "The WHO pandemic treaty grants the UN authority to override national health laws.", "source": "Circulating via X, Telegram — 4.2M impressions" }
+    },
+    {
+      "id": "post-003",
+      "title": "IPL 2026: Data Shows Why Teams Are Overpaying for Power-Play Bowlers",
+      "slug": "ipl-2026-powerplay-analysis",
+      "excerpt": "An analysis of 480 matches reveals the metric every franchise is chasing — and why three teams have cracked it while the rest overspend.",
+      "content": "<p>The economics of the IPL auction have shifted dramatically since 2024. Our analysis of 480 matches across three seasons reveals a clear pattern: teams are systematically overpaying for power-play bowling economy rates while undervaluing death-over specialists.</p><h2 id='data'>The Data</h2><p>The three most successful franchises in the 2025-26 cycle — Mumbai Indians, Rajasthan Royals, and Sunrisers Hyderabad — share one counterintuitive trait: their most expensive bowling signings were not power-play specialists.</p>",
+      "category": "sports",
+      "tags": ["IPL", "Cricket", "Data Analysis"],
+      "author": "Ananya Roy",
+      "date": "2026-03-25",
+      "featured": false,
+      "coverImage": "",
+      "factCheck": { "verdict": "", "claim": "", "source": "" }
+    },
+    {
+      "id": "post-004",
+      "title": "The Open-Source AI Models That Governments Are Quietly Banning",
+      "slug": "open-source-ai-government-bans",
+      "excerpt": "Six countries have issued or proposed restrictions on running specific open-weight models — and the legal reasoning differs dramatically in each case.",
+      "content": "<p>Governments around the world are beginning to regulate open-source AI models — but the approaches vary so dramatically that compliance has become nearly impossible for multinational organisations.</p><h2 id='s1'>The Six Countries</h2><p>France, India, Australia, Brazil, South Korea, and one Gulf state that declined to be named have all taken steps toward restricting the domestic deployment of specific open-weight models above certain parameter thresholds.</p>",
+      "category": "tech",
+      "tags": ["AI Policy", "Open Source", "Regulation"],
+      "author": "Li Wei",
+      "date": "2026-03-25",
+      "featured": false,
+      "coverImage": "",
+      "factCheck": { "verdict": "", "claim": "", "source": "" }
+    },
+    {
+      "id": "post-005",
+      "title": "Why Three Legacy Newspapers Died in the Same Week — And What It Signals",
+      "slug": "legacy-newspapers-collapse",
+      "excerpt": "The closures aren't coincidences. They're a system failure — and the dominos are only beginning to fall.",
+      "content": "<p>In the space of five days last week, three regional newspapers announced the end of their print editions. Separately, each story was reported as a local tragedy. Together, they represent something systemic.</p><h2 id='s1'>The Pattern</h2><p>All three outlets shared three characteristics: they were over 60 years old, they had been acquired by private equity firms between 2018 and 2022, and their digital transition had been underfunded while dividends were extracted.</p>",
+      "category": "media",
+      "tags": ["Media", "Journalism", "Print"],
+      "author": "Fatima Al-Rashid",
+      "date": "2026-03-26",
+      "featured": false,
+      "coverImage": "",
+      "factCheck": { "verdict": "", "claim": "", "source": "" }
+    }
+  ]
+}
